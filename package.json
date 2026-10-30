@@ -1,0 +1,42 @@
+{
+  "name": "chatoop-ai-roundtable",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A bilingual, self-hosted multi-model AI roundtable with discussion, debate, polls and traceable summaries.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:web": "vite --host 127.0.0.1 --port 5180 --strictPort",
+    "dev:api": "node --watch server/local.mjs",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 5180",
+    "lint": "eslint src worker server tests scripts",
+    "test": "node --test tests/*.test.mjs",
+    "test:ui": "playwright test",
+    "check": "npm run lint && npm test && npm run build",
+    "scan:public": "node scripts/scan-public.mjs",
+    "worker:dev": "wrangler dev --local --port 8787",
+    "worker:deploy": "wrangler deploy",
+    "format": "prettier --write src worker server scripts tests docs *.md *.json *.jsonc"
+  },
+  "dependencies": {
+    "qrcode": "^1.5.4",
+    "react": "19.2.6",
+    "react-dom": "19.2.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.56.1",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.6.0",
+    "prettier": "^3.9.10",
+    "vite": "^8.0.12",
+    "wrangler": "^4.0.0"
+  }
+}

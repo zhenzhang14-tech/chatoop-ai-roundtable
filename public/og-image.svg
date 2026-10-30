@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#07070E"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#F59E0B"/>
+  <text x="90" y="165" font-family="Georgia, 'Times New Roman', serif" font-size="34" letter-spacing="6" fill="#4A4A6A">AI ROUNDTABLE</text>
+  <text x="86" y="315" font-family="Georgia, 'Times New Roman', serif" font-size="118" font-weight="700" fill="#EDEEF8">AI <tspan fill="#F59E0B" font-style="italic">Round</tspan>table</text>
+  <text x="90" y="395" font-family="Arial, Helvetica, sans-serif" font-size="40" fill="#C0C0D8">Multi-model discussion platform</text>
+  <text x="90" y="450" font-family="Arial, Helvetica, sans-serif" font-size="36" fill="#8888AA">多模型圆桌会议 · 讨论 · 投票 · 总结</text>
+  <text x="90" y="545" font-family="'Courier New', monospace" font-size="26" fill="#5A5A7A">/vote  ·  /summary  ·  @model  ·  /export</text>
+  <g transform="translate(945,300)">
+    <circle cx="0" cy="0" r="120" fill="none" stroke="#F59E0B" stroke-width="5"/>
+    <circle cx="0" cy="0" r="26" fill="#F59E0B"/>
+    <circle cx="0" cy="-120" r="30" fill="#10B981"/>
+    <circle cx="114" cy="-37" r="30" fill="#F59E0B"/>
+    <circle cx="70" cy="97" r="30" fill="#60A5FA"/>
+    <circle cx="-70" cy="97" r="30" fill="#A78BFA"/>
+    <circle cx="-114" cy="-37" r="30" fill="#F472B6"/>
+  </g>
+</svg>

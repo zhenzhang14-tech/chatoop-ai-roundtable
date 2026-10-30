@@ -1,0 +1,13 @@
+# Copy to .dev.vars for local API development. Keep this file out of Git.
+# OpenRouter is the default provider. Any OpenAI-compatible base URL can be used.
+OPENROUTER_API_KEY=
+PROVIDER_BASE_URL=https://openrouter.ai/api/v1
+# Comma-separated exact model IDs from your provider's catalog.
+ROUND_TABLE_MODELS=openai/gpt-4o-mini,google/gemini-2.0-flash-001,deepseek/deepseek-chat
+# No account data or provider traffic is created when true.
+MOCK_MODE=true
+# For remote hosting, configure allowed frontend origins and access protection.
+ALLOWED_ORIGINS=http://127.0.0.1:5180,http://localhost:5180
+ALLOW_ANONYMOUS=true
+ENABLE_REGISTRATION=false
+ADMIN_EMAILS=
