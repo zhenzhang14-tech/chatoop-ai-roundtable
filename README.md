@@ -10,7 +10,19 @@ It works with **OpenRouter** and configurable **OpenAI-compatible providers**. P
 
 ## Interface examples
 
-The following images were supplied by the project owner as examples of the poll and share-poster design. Model names, answers and counts in them are illustrative product examples, not a benchmark or a claim about current model availability. Fresh screenshots of the cleaned release are documented in the [interface guide](docs/INTERFACE.md).
+### Existing discussion archive
+
+The original local project still contains **16,396 history-index entries and 16,396 detail files**, imported from Opper's public history. These screenshots show two existing car-wash discussions in the **original saved interface**, opened through a local read-only preview. No model API was called and no answers were generated for the screenshots. They document the earlier interface; they are not screenshots of a new live run in the cleaned release.
+
+| Archived debate                                                                                   | Archived poll                                                                               |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| ![Original interface showing an existing six-model debate](docs/images/discussion-archive-zh.jpg) | ![Original interface showing an existing seven-model poll](docs/images/poll-archive-zh.jpg) |
+
+The original archive remains local. The public source release starts with empty instance history and does not automatically import the archive or the old browser's private conversations. [Screenshot provenance and interface guide](docs/INTERFACE.md#existing-archive--原有历史归档).
+
+### Result and poster design
+
+The following images were supplied by the project owner as examples of the poll and share-poster design. Model names, answers and counts in them are illustrative product examples, not a benchmark or a claim about current model availability. A screenshot of the cleaned release's homepage is in the [interface guide](docs/INTERFACE.md).
 
 | Poll result                                                                   | Share poster                                                                  |
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |

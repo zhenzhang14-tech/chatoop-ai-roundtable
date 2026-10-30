@@ -2,6 +2,36 @@
 
 [Feature reference](FEATURES.md) · [中文说明](../README.zh-CN.md) · [English README](../README.md)
 
+## Existing archive / 原有历史归档
+
+The original project retains `public/opper-history-index.json` with 16,396 entries and `public/opper-details/` with 16,396 JSON detail files. The index records its source as [Opper public roundtable history](https://opper.ai/ai-roundtable/history) and its generation time as June 3, 2026. These are imported public records, not evidence of private conversations belonging to the project owner.
+
+原项目的 `public/opper-history-index.json` 中有 16,396 条索引，`public/opper-details/` 中有同数量的 JSON 详情文件。索引记载来源为 [Opper 公开圆桌历史](https://opper.ai/ai-roundtable/history)，生成时间为 2026 年 6 月 3 日。这是导入的公开记录，不能据此认定为项目所有者的私人对话。
+
+The following screenshots were captured on October 30, 2026 from the original saved build and its existing detail files. A temporary local preview accepted only read requests and blocked model calls and writes. The small corner label identifies that preview. The original files were not changed. Text, model labels, dates, the shortened English summary and the poll's non-aggregated stance display are retained as the original interface rendered them; they are not benchmark results or verified statements about current model availability.
+
+截图于 2026 年 10 月 30 日使用原项目已有构建和详情文件拍摄。临时本地预览只接受读取，禁止模型调用和写入，右下角有只读标记；原始文件未改动。原文、模型名称、日期、截短的英文摘要以及投票未聚合为比例条的展示均保留原界面的实际呈现，不作为评测结果或当前模型可用性的证明。
+
+### Archived debate / 历史辩论
+
+![Original saved interface displaying a six-model car-wash debate / 原有界面中的六模型洗车辩论](images/discussion-archive-zh.jpg)
+
+Recorded source / 归档记载的来源：[100-meter car-wash debate](https://opper.ai/ai-roundtable/questions/100-00a6cf74). The page shows the question, six participants, a saved summary and per-model positions; the complete discussion continues below the captured viewport.
+
+画面包含问题、六个参与模型、已保存的摘要和模型立场；完整讨论位于截图可见范围下方。
+
+### Archived poll / 历史投票
+
+![Original saved interface displaying a seven-model car-wash poll / 原有界面中的七模型洗车投票](images/poll-archive-zh.jpg)
+
+Recorded source / 归档记载的来源：[Car-wash poll](https://opper.ai/ai-roundtable/questions/-00f5918d). The original page falls back to raw model positions when it cannot aggregate the archived answer labels; no counts were invented for the screenshot. Remaining reasons continue below the viewport.
+
+原页面无法将该归档的答案标签聚合为短选项时，回退展示模型原始立场；截图没有补造票数。其余理由位于截图可见范围下方。
+
+Only these selected interface screenshots are included here. The full imported archive remains outside this repository. The cleaned release uses the separate `chatoop_rt_` browser-storage prefix and fresh instance history, so old data does not appear automatically. The current release's homepage is shown next; its functionality is described in the remaining sections.
+
+仓库仅包含上述选定界面截图，完整导入归档仍留在原项目中。整理版使用独立的 `chatoop_rt_` 浏览器存储前缀和新的实例历史，因此旧记录不会自动出现。下面的首页来自整理版，其余章节说明当前功能。
+
 ## Homepage / 首页
 
 ![Chinese homepage captured during local simulated-mode inspection / 本地模拟模式中文版首页实测](images/home-zh.png)
