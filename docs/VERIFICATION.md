@@ -26,3 +26,9 @@ Not verified in this session / 本次未验证：
 - The committed Playwright desktop/mobile suite was prepared for reproducible CI; no claim is made that it ran locally in this session.
 
 真实供应商连通性、效果、速度和计费，线上 Cloudflare/DNS/存储资源，以及本次未在本地执行的 Playwright 桌面/手机套件，都不写成已通过。邮件、收款和后台辩论任务不属于已实现能力。
+
+## GitHub CI / GitHub 自动检查
+
+The first published candidate `4405bae` passed the complete [GitHub source-check workflow](https://github.com/zhenzhang14-tech/chatoop-ai-roundtable/actions/runs/41064080606): clean dependency installation, lint, 23 core tests, production build, public-source scan and all 6 desktop/mobile browser cases. Browser tests use simulated replies and no provider key. This is cloud CI verification, not real-provider integration or production deployment.
+
+首次公开候选 `4405bae` 的 GitHub 自动检查已通过：安装依赖、代码检查、23 项核心测试、构建、公开源码扫描及全部 6 项桌面/手机浏览器用例。浏览器用例使用模拟回复，无需供应商密钥。这是云端 CI 验证，不是实际模型联调或生产部署。

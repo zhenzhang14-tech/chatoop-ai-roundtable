@@ -2676,6 +2676,7 @@ export default function App() {
       const ids = parsed.targetIds;
       if (!ids.length) return;
       const effectiveMode = options.discussionMode || discussionMode;
+      if (options.discussionMode) setDiscussionMode(options.discussionMode);
       const hostText = parsed.cleanText || raw;
       const topicText = withAttachments(hostText);
       const runId = generateId();
