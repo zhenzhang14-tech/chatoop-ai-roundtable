@@ -2,31 +2,23 @@
 
 [简体中文](README.zh-CN.md) · **English** · [Feature reference / 功能清单](docs/FEATURES.md) · [Interface guide / 界面指南](docs/INTERFACE.md)
 
-**One question. Multiple models. A discussion you can inspect.**
+**AI models discuss with one another · Configurable discussion rounds · Model voting**
 
-ChatOOP AI Roundtable is a bilingual, self-hosted web app for comparing independent AI answers, hosting multi-model discussions, running automatic debates, and collecting model votes. You are the host: choose the participants, ask follow-ups, mention a model, stop a run, and inspect the final agreement and remaining differences.
+**AI 大模型相互讨论 · 可设置讨论轮次 · 支持投票**
 
-It works with **OpenRouter** and configurable **OpenAI-compatible providers**. Provider keys stay on the API server. A clearly labeled simulation mode lets you try the complete workflow without a provider account.
+ChatOOP AI Roundtable brings multiple AI models into the same conversation. You choose the participants and topic; the models read and respond to one another, and you can inspect their reasoning, changing positions, agreement and remaining differences.
 
-## Interface examples
+- **Models discuss with one another:** participants take turns reading earlier replies, agreeing, challenging arguments and revising their positions. Independent-answer mode is also available for comparison.
+- **Set the discussion rounds:** choose an automatic-debate limit of **3, 4, 5 or 6 rounds** in **Settings**; the default is **4**. A run can finish early after at least 3 rounds if two consecutive complete assessments show stable agreement. You can stop it manually at any time.
+- **Let models vote:** use **Yes/No** or **2–6 custom options**. Inspect each model's choice and reason, valid-vote counts and proportions, and the final summary.
 
-### Existing discussion archive
+The app supports English and Chinese, self-hosting, **OpenRouter** and configurable **OpenAI-compatible providers**. Provider keys stay on the API server. A clearly labeled simulation mode lets you explore the workflow without an API key.
 
-The original local project still contains **16,396 history-index entries and 16,396 detail files**, imported from Opper's public history. These screenshots show two existing car-wash discussions in the **original saved interface**, opened through a local read-only preview. No model API was called and no answers were generated for the screenshots. They document the earlier interface; they are not screenshots of a new live run in the cleaned release.
+## Discussion preview
 
-| Archived debate                                                                                   | Archived poll                                                                               |
-| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| ![Original interface showing an existing six-model debate](docs/images/discussion-archive-zh.jpg) | ![Original interface showing an existing seven-model poll](docs/images/poll-archive-zh.jpg) |
+![Original interface showing an existing six-model discussion](docs/images/discussion-archive-zh.jpg)
 
-The original archive remains local. The public source release starts with empty instance history and does not automatically import the archive or the old browser's private conversations. [Screenshot provenance and interface guide](docs/INTERFACE.md#existing-archive--原有历史归档).
-
-### Result and poster design
-
-The following images were supplied by the project owner as examples of the poll and share-poster design. Model names, answers and counts in them are illustrative product examples, not a benchmark or a claim about current model availability. A screenshot of the cleaned release's homepage is in the [interface guide](docs/INTERFACE.md).
-
-| Poll result                                                                   | Share poster                                                                  |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| ![Owner-supplied poll result example](docs/images/reference-poll-results.png) | ![Owner-supplied share-poster example](docs/images/reference-poll-poster.png) |
+An existing car-wash debate in the original saved interface, shown from a local public-history archive. No new model call was made for this screenshot. [Screenshot source and interface guide](docs/INTERFACE.md#existing-archive--原有历史归档).
 
 ## What it does
 

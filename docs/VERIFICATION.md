@@ -8,9 +8,9 @@ Completed before public-source preparation / 已完成：
 - `npm run check`: lint, 23 core regression tests and the Vite production build passed before the final documentation/static cleanup.
 - Core coverage: independent parallel replies; participant failure isolation; cancellation; minimum-round/stable-agreement behavior; exact quoted assessment evidence; initial/final stance comparison; unknown counts; context preservation; SSE CRLF parsing; valid poll proportions/ties; bilingual dictionary parity; API simulation labels; guarded real-mode calls; registration/admin boundaries; rejection of client debit amounts; empty public history; honest unavailable reset-email response; real-mode login reachability.
 - Manual browser inspection with simulated replies: Chinese homepage, independent replies, conversation restore, automatic multi-round discussion with evidence-backed summary, and custom-poll layout.
-- Owner-provided poll/share-poster reference images are included with explicit example captions.
+- Documentation retains one clearly attributed screenshot of an existing archived debate; the owner requested removal of the other showcase images.
 
-安装依赖时审计未发现漏洞；代码检查、23 项核心测试和构建已通过。浏览器检查使用模拟回复，覆盖中文首页、独立回答、恢复会话、多轮讨论摘要和自定义投票布局。所有者提供的两张图片按效果示例标注。
+安装依赖时审计未发现漏洞；代码检查、23 项核心测试和构建已通过。浏览器检查使用模拟回复，覆盖中文首页、独立回答、恢复会话、多轮讨论摘要和自定义投票布局。文档仅保留一张注明来源的历史辩论截图，其余展示图按所有者要求移除。
 
 The owner then requested that model-call testing stop because no API key is configured. No real model requests were made. Subsequent work was limited to source corrections, documentation, static build/source checks and publication. The mock custom-option adapter and poster layout received final source corrections after manual inspection; their latest version was not re-exercised with live model calls.
 
