@@ -249,6 +249,8 @@ export default function App() {
         ...m,
         streaming: false,
         summaryLoading: false,
+        loading: false,
+        pendingModelIds: [],
       })),
     );
   };
@@ -3136,19 +3138,26 @@ export default function App() {
         ),
         s = String(e || currentChatTopic() || ``).trim();
       if (!s || o.length < 1) return;
+      const voteConversationId = activeChatId;
+      const voteController = new AbortController();
+      discussionAbortRef.current = voteController;
+      const isLiveVote = () =>
+        activeConversationRef.current === voteConversationId &&
+        !voteController.signal.aborted;
       let c = usageAmount(o.length, 0.01);
       if (!hasCredits(c)) {
-        setChatMessages((e) => [
-          ...e,
-          {
-            id: `${generateId()}_e`,
-            role: `assistant`,
-            kind: `error`,
-            content: translate(`err_insufficientCredits`, {
-              amount: c.toFixed(4),
-            }),
-          },
-        ]);
+        isLiveVote() &&
+          setChatMessages((e) => [
+            ...e,
+            {
+              id: `${generateId()}_e`,
+              role: `assistant`,
+              kind: `error`,
+              content: translate(`err_insufficientCredits`, {
+                amount: c.toFixed(4),
+              }),
+            },
+          ]);
         return;
       }
       let l = normalizeVoteOptions(r),
@@ -3162,94 +3171,103 @@ export default function App() {
             }
           : null,
         f = String(i || chatTranscript() || `Host: ${s}`).trim();
-      (setChatMessages((e) => [
-        ...e,
-        ...(d ? [d] : []),
-        {
-          id: u,
-          role: `assistant`,
-          kind: `vote`,
-          topic: s,
-          votes: [],
-          models: o.slice(),
-          pendingModelIds: o.slice(),
-          errors: {},
-          options: l,
-          loading: true,
-        },
-      ]),
-        setChatBusy(true));
+      (isLiveVote() &&
+        setChatMessages((e) => [
+          ...e,
+          ...(d ? [d] : []),
+          {
+            id: u,
+            role: `assistant`,
+            kind: `vote`,
+            topic: s,
+            votes: [],
+            models: o.slice(),
+            pendingModelIds: o.slice(),
+            errors: {},
+            options: l,
+            loading: true,
+          },
+        ]),
+        isLiveVote() && setChatBusy(true));
       try {
         (await Promise.allSettled(
           o.map(async (e) => {
             try {
               let t = decorateVotes(
-                await callVoteAPI(s, [e], f, l, null, lang),
+                await callVoteAPI(s, [e], f, l, null, lang, false, {
+                  signal: voteController.signal,
+                }),
               );
-              setChatMessages((n) =>
-                n.map((n) => {
-                  if (n.id !== u) return n;
-                  let r = [
-                      ...(Array.isArray(n.votes) ? n.votes : []).filter(
-                        (t) => t.modelId !== e,
+              isLiveVote() &&
+                setChatMessages((n) =>
+                  n.map((n) => {
+                    if (n.id !== u) return n;
+                    let r = [
+                        ...(Array.isArray(n.votes) ? n.votes : []).filter(
+                          (t) => t.modelId !== e,
+                        ),
+                        ...t,
+                      ].sort(
+                        (e, t) => o.indexOf(e.modelId) - o.indexOf(t.modelId),
                       ),
-                      ...t,
-                    ].sort(
-                      (e, t) => o.indexOf(e.modelId) - o.indexOf(t.modelId),
-                    ),
-                    i = (
-                      Array.isArray(n.pendingModelIds) ? n.pendingModelIds : o
-                    ).filter((t) => t !== e),
-                    a = {
-                      ...(n.errors || {}),
-                    };
-                  return (
-                    delete a[e],
-                    {
-                      ...n,
-                      votes: analyzeVotesForStats(r).votes,
-                      pendingModelIds: i,
-                      errors: a,
-                      loading: i.length > 0,
-                    }
-                  );
-                }),
-              );
+                      i = (
+                        Array.isArray(n.pendingModelIds) ? n.pendingModelIds : o
+                      ).filter((t) => t !== e),
+                      a = {
+                        ...(n.errors || {}),
+                      };
+                    return (
+                      delete a[e],
+                      {
+                        ...n,
+                        votes: analyzeVotesForStats(r).votes,
+                        pendingModelIds: i,
+                        errors: a,
+                        loading: i.length > 0,
+                      }
+                    );
+                  }),
+                );
             } catch (t) {
-              setChatMessages((n) =>
-                n.map((n) => {
-                  if (n.id !== u) return n;
-                  let r = (
-                    Array.isArray(n.pendingModelIds) ? n.pendingModelIds : o
-                  ).filter((t) => t !== e);
-                  return {
-                    ...n,
-                    pendingModelIds: r,
-                    errors: {
-                      ...(n.errors || {}),
-                      [e]: t.detail || t.message || translate(`err_voteFailed`),
-                    },
-                    loading: r.length > 0,
-                  };
-                }),
-              );
+              isLiveVote() &&
+                setChatMessages((n) =>
+                  n.map((n) => {
+                    if (n.id !== u) return n;
+                    let r = (
+                      Array.isArray(n.pendingModelIds) ? n.pendingModelIds : o
+                    ).filter((t) => t !== e);
+                    return {
+                      ...n,
+                      pendingModelIds: r,
+                      errors: {
+                        ...(n.errors || {}),
+                        [e]:
+                          t.detail || t.message || translate(`err_voteFailed`),
+                      },
+                      loading: r.length > 0,
+                    };
+                  }),
+                );
             }
           }),
         ),
-          recordUsage(`chat vote`, o.length, 0.01));
+          isLiveVote() && recordUsage(`chat vote`, o.length, 0.01));
       } finally {
-        (setChatMessages((e) =>
-          e.map((e) =>
-            e.id === u
-              ? {
-                  ...e,
-                  loading: false,
-                  pendingModelIds: [],
-                }
-              : e,
+        (isLiveVote() &&
+          setChatMessages((e) =>
+            e.map((e) =>
+              e.id === u
+                ? {
+                    ...e,
+                    loading: false,
+                    pendingModelIds: [],
+                  }
+                : e,
+            ),
           ),
-        ),
-          setChatBusy(false));
+          isLiveVote() && setChatBusy(false));
+        if (discussionAbortRef.current === voteController)
+          discussionAbortRef.current = null;
       }
     };
   ((chatActionsRef.current = {

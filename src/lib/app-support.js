@@ -75,7 +75,16 @@ async function callAPI(e, t, n) {
     reply: r.reply || `[no response]`,
   };
 }
-async function callVoteAPI(e, t, n, r, i, a = `en`, o = false) {
+async function callVoteAPI(
+  e,
+  t,
+  n,
+  r,
+  i,
+  a = `en`,
+  o = false,
+  requestOptions = {},
+) {
   return (
     (
       await postAPI(
@@ -91,6 +100,7 @@ async function callVoteAPI(e, t, n, r, i, a = `en`, o = false) {
         },
         {
           timeoutMs: 6e4,
+          ...requestOptions,
         },
       )
     ).votes || []
